@@ -1,5 +1,5 @@
 # ES273
-Contains the different labs/projects completed through ES273 (Advanced Introduction to Robotics) 
+### Contains the different labs/projects completed through ES273 (Advanced Introduction to Robotics) 
 
 DH - Denavit-Hartenberg Forward Kinematics.
 
