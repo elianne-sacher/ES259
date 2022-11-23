@@ -1,7 +1,7 @@
 function pos = DH(th)
 % Uses the Denavit-Hartenberg method to determine the final position of
 % the end effector using the joint positions of the robot. 
-% th is a 6x1 matrix describing the robot's joint positions.
+% this is a 6x1 matrix describing the robot's joint positions.
 
 % The given dimensions of the robot:
 H1 = 162.5;
@@ -11,11 +11,6 @@ L2 = 392;
 W1 = 133.3;
 W2 = 259.6;
 
-% When you work through the frame assignment procedure discussed in class,
-% you'll come up with 4 parameters for each of the 6 joints. It can be
-% convenient to put these parameter values into a single table, where
-% each row gives the four parameters for one link. (Both the Lynch/Park
-% and Spong textbooks give examples of such tables for various robots.)
 % Create a 6x4 matrix of those values here:
 DHmat = [th(1) 0 H1 -pi/2;
         th(2) L1 0 0;
@@ -57,7 +52,7 @@ Tret = [1 0 0 0;
        0 0 0 1];
 end
 
-% Now you can use those functions and the D-H table to calculate the
+% Now use those functions and the D-H table to calculate the
 % transformation matrix for each successive joint relative to the last:
 T1 = RZ(DHmat(1,1))*TZ(DHmat(1,3))*TX(DHmat(1,2))*RX(DHmat(1,4));
 T2 = RZ(DHmat(2,1))*TZ(DHmat(2,3))*TX(DHmat(2,2))*RX(DHmat(2,4));
