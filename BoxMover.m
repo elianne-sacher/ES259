@@ -1,8 +1,6 @@
-%  Script  for Lab 5 on vision and manipulation.
-
 % (The below assumes that the environment is already set up with the armCmd publisher to the arm controller)
 % Set this variable to 0 while working on the program outside the lab, and change it to 1 when on the real robot:
-InLab = 0;
+InLab = 1;
 
 % (x,y) locations in robot coordinates of the top left and bottom right of the corresponding marker blocks:
 topcorner = [340,-400];
@@ -13,7 +11,11 @@ gripperpub = rospublisher('/gripper_service_es159','std_msgs/Float32MultiArray')
 gripperMsg = rosmessage('std_msgs/Float32MultiArray');
 
 % Create a message that corresponds to moving the arm out of the way of the camera field of view:
-armCmd = rospublisher('/arm_controller/command');
+if InLab
+    armCmd = rospublisher('scaled_pos_joint_traj_controller/command');
+else
+    armCmd = rospublisher('/arm_controller/command');
+end
 OriginalMsg = rosmessage(armCmd);
 OriginalMsg.JointNames = {'shoulder_pan_joint','shoulder_lift_joint','elbow_joint','wrist_1_joint','wrist_2_joint','wrist_3_joint'};
 originalpoint = rosmessage('trajectory_msgs/JointTrajectoryPoint');
@@ -56,10 +58,6 @@ Green = reshape(GreenVals,[CamMsg.Width,CamMsg.Height])';
 Blue = reshape(BlueVals,[CamMsg.Width,CamMsg.Height])';
 
 % Now do the image processing described in the Lab 5 handout:
-
-% As you work through writing and debugging this script, you can display various image matrices, e.g.
-% imagesc(Red); colormap(gray);
-% N.B. As described in the handout, if you display image matrices directly as in the above line, they'll appear sideways and mirrored; if you want them to match the snapshot you expect to see from the camera, need to send something to the imagesc command that isn't exactly the raw matrix...
 
 % Crop the images:
 Red = Red(151:400,51:550);
