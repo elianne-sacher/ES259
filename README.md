@@ -10,3 +10,5 @@ IVK - Inverse Velocity Kinematics (with both the position control and velocity c
 NE - Numerical Inverse Dynamics using the Newton-Euler algorithm of section 8.3.2 of the Modern Robotics textbook.
 
 MazeFinder - Navigation through a maze of obstacles to without colliding with the obstacles using the A* search algorithm.
+
+BoxMover - Image processing for moving an object from one location to another.
