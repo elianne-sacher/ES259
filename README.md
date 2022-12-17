@@ -12,3 +12,5 @@ NE - Numerical Inverse Dynamics using the Newton-Euler algorithm of section 8.3.
 MazeFinder - Navigation through a maze of obstacles to without colliding with the obstacles using the A* search algorithm.
 
 BoxMover - Image processing for moving an object from one location to another.
+
+FinalProject - Contains all the relavent files for my final project: "Ball-on-Beam ft. UR5e".
